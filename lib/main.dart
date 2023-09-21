@@ -1,4 +1,5 @@
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:findjop/auth/presention/screens/profileandsettings.dart/emailaddress.dart';
 import 'package:findjop/core/theme/apptheme.dart';
 
 import 'package:flutter/material.dart';
@@ -104,7 +105,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: PhoneNumberView(),
+      child: EmailAddressView(),
     );
   }
 }
