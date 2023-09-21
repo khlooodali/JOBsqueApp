@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/successoperation/view.dart';
+import '../../../../core/customwidgets/successoperation/view.dart';
 
 class SucessCreateAccount extends StatelessWidget {
   const SucessCreateAccount({super.key});

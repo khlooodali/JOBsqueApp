@@ -35,8 +35,7 @@ class _SignupFormState extends State<SignupForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomTextField(
-            isvalid: false,
-            isEmpty: true,
+            isBold: false,
             ispassword: false,
             hint: 'Username',
             iconname: 'profile',
@@ -59,8 +58,7 @@ class _SignupFormState extends State<SignupForm> {
             height: 16.h,
           ),
           CustomTextField(
-            isEmpty: true,
-            isvalid: false,
+            isBold: false,
             ispassword: false,
             hint: 'Email',
             iconname: 'sms',
@@ -83,8 +81,7 @@ class _SignupFormState extends State<SignupForm> {
           ),
           CustomTextField(
             ispassword: ishide,
-            isEmpty: emptypassword,
-            isvalid: validpassword,
+            isBold: false,
             hint: 'Passwoed',
             iconname: 'lock',
             siconname: ishide ? 'Show' : 'hide',
@@ -95,27 +92,16 @@ class _SignupFormState extends State<SignupForm> {
             controller: passwordController,
             type: TextInputType.visiblePassword,
             //errorText: 'Password must be at least 8 characters',
-            onchange: (value) {
-              if (value!.isNotEmpty) {
-                if (passwordController.text.length >= 8) {
-                  validpassword = true;
-                  setState(() {});
-                }
-                validpassword = false;
-              } else {
-                emptypassword = true;
-              }
-              return null;
-            },
+
             validation: (value) {
               if (value!.isEmpty) {
                 return 'Please Enter Your Password';
               }
-              // final passwordRegex =
-              //     RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
-              // if (!passwordRegex.hasMatch(value)) {
-              //   return 'Password must be at least 8 characters, including at least one letter and one number';
-              // }
+              final passwordRegex =
+                  RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
+              if (!passwordRegex.hasMatch(value)) {
+                return 'Password must be at least 8 characters, including at least one letter and one number';
+              }
 
               return null;
             },

@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../theme/appcolors.dart';
 
 class CustomTextField extends StatelessWidget {
-  CustomTextField(
+  const CustomTextField(
       {super.key,
       required this.hint,
       required this.iconname,
@@ -17,14 +17,14 @@ class CustomTextField extends StatelessWidget {
       required this.ispassword,
       this.errorText,
       this.onchange,
-      required this.isvalid,
-      required this.isEmpty});
+      required this.isBold});
   final String hint;
   final String iconname;
   final String? siconname;
   final String? errorText;
-  bool isvalid = false;
-  bool isEmpty = true;
+  //bool isvalid = false;
+  //bool isEmpty = true;
+  final bool isBold;
 
   final TextEditingController controller;
   final bool ispassword;
@@ -50,36 +50,40 @@ class CustomTextField extends StatelessWidget {
         keyboardType: type,
         obscureText: ispassword,
         decoration: InputDecoration(
-          suffixIcon: IconButton(
-              onPressed: tappedicon,
-              icon: SvgPicture.asset(
-                'assets/icons/$siconname.svg',
-                fit: BoxFit.scaleDown,
-              )),
-          prefixIcon: SvgPicture.asset(
-            'assets/icons/$iconname.svg',
-            fit: BoxFit.scaleDown,
-          ),
-          errorBorder: isEmpty
-              ? Theme.of(context).inputDecorationTheme.enabledBorder
-              : isvalid
-                  ? Theme.of(context).inputDecorationTheme.enabledBorder
-                  : Theme.of(context).inputDecorationTheme.errorBorder,
-          enabledBorder: Theme.of(context).inputDecorationTheme.enabledBorder,
-          hintText: hint,
-          errorText: errorText,
-          errorMaxLines: 2,
-          labelStyle: Theme.of(context).inputDecorationTheme.hintStyle,
-          errorStyle: isEmpty
-              ? Theme.of(context).inputDecorationTheme.hintStyle
-              : isvalid
-                  ? const TextStyle(
-                      fontFamily: 'SFPRODISPLAY',
-                      fontSize: 16,
-                      color: Color(0xff60C631), //success500
-                      fontWeight: FontWeight.w400)
-                  : Theme.of(context).inputDecorationTheme.errorStyle,
-        ),
+            suffixIcon: IconButton(
+                onPressed: tappedicon,
+                icon: SvgPicture.asset(
+                  'assets/icons/$siconname.svg',
+                  fit: BoxFit.scaleDown,
+                )),
+            prefixIcon: SvgPicture.asset(
+              'assets/icons/$iconname.svg',
+              fit: BoxFit.scaleDown,
+            ),
+            errorBorder: Theme.of(context).inputDecorationTheme.errorBorder,
+            // isEmpty
+            //     ? Theme.of(context).inputDecorationTheme.enabledBorder
+            //     : isvalid
+            //         ? Theme.of(context).inputDecorationTheme.enabledBorder
+            //         : Theme.of(context).inputDecorationTheme.errorBorder,
+            enabledBorder: Theme.of(context).inputDecorationTheme.enabledBorder,
+            hintText: hint,
+            errorText: errorText,
+            errorMaxLines: 2,
+            hintStyle: isBold
+                ? Theme.of(context).textTheme.displayLarge
+                : Theme.of(context).inputDecorationTheme.hintStyle,
+            errorStyle: Theme.of(context).inputDecorationTheme.errorStyle
+            //  isEmpty
+            //     ? Theme.of(context).inputDecorationTheme.hintStyle
+            //     : isvalid
+            //         ? const TextStyle(
+            //             fontFamily: 'SFPRODISPLAY',
+            //             fontSize: 16,
+            //             color: Color(0xff60C631), //success500
+            //             fontWeight: FontWeight.w400)
+            //         : Theme.of(context).inputDecorationTheme.errorStyle,
+            ),
       ),
     );
   }

@@ -32,8 +32,7 @@ class ConfirmPasswordView extends StatelessWidget {
                             'Set your new password so you can login and acces Jobsque',
                         space: 8)),
                 CustomTextField(
-                  isEmpty: true,
-                  isvalid: false,
+                  isBold: false,
                   ispassword: true,
                   hint: 'New Password',
                   iconname: 'lock',
@@ -56,8 +55,7 @@ class ConfirmPasswordView extends StatelessWidget {
                   height: 16,
                 ),
                 CustomTextField(
-                  isEmpty: true,
-                  isvalid: false,
+                  isBold: false,
                   ispassword: true,
                   hint: 'Confirm Password',
                   iconname: 'lock',

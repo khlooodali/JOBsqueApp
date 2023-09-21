@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/successoperation/view.dart';
+import '../../../../core/customwidgets/successoperation/view.dart';
 
 class PasswordChangedSuccesfully extends StatelessWidget {
   const PasswordChangedSuccesfully({super.key});

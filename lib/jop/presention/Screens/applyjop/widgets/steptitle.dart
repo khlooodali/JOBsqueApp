@@ -1,3 +1,4 @@
+import 'package:findjop/core/theme/appcolors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,7 +20,10 @@ class StepTitle extends StatelessWidget {
         ),
         Text(
           subtitle,
-          style: Theme.of(context).textTheme.displaySmall,
+          style: const TextStyle(fontSize: 14, color: AppColor.naturalColor500),
+        ),
+        SizedBox(
+          height: 28.h,
         ),
       ],
     );

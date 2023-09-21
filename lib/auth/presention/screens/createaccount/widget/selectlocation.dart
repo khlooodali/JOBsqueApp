@@ -16,7 +16,7 @@ List<LocationItem> locationlist = [
     tap: () {},
   ),
   LocationItem(
-    countryCode: '',
+    countryCode: 'sg',
     countryName: 'Singapore',
     isselected: false,
     tap: () {},
@@ -118,6 +118,7 @@ class LocationItem extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              //CircleFlag(countryCode),
               Text(
                 getCountryflag(countryCode),
               ),

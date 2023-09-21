@@ -31,8 +31,7 @@ class ResetPasswordView extends StatelessWidget {
                             'Enter the email address you used when you joined and we’ll send you instructions to reset your password.',
                         space: 8)),
                 CustomTextField(
-                  isEmpty: true,
-                  isvalid: false,
+                  isBold: false,
                   ispassword: false,
                   hint: 'Email',
                   iconname: 'sms',

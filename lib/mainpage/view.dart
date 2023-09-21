@@ -1,9 +1,9 @@
 import 'package:findjop/core/theme/appcolors.dart';
-import 'package:findjop/mainpage/pages/appliedview.dart';
-import 'package:findjop/mainpage/pages/homeview.dart';
-import 'package:findjop/mainpage/pages/messagesview.dart';
-import 'package:findjop/mainpage/pages/profileview.dart';
-import 'package:findjop/mainpage/pages/savedview.dart';
+import 'package:findjop/mainpage/pages/appliedpage.dart';
+import 'package:findjop/mainpage/pages/homepage.dart';
+import 'package:findjop/mainpage/pages/messagepage.dart';
+import 'package:findjop/mainpage/pages/profilePage.dart';
+import 'package:findjop/mainpage/pages/savedpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -17,11 +17,11 @@ class MainPageView extends StatefulWidget {
 class _MainPageViewState extends State<MainPageView> {
   int currentIndex = 0;
   final List<Widget> _widgetOption = const [
-    HomeView(),
-    MessageView(),
-    AppliedView(),
-    SavedView(),
-    ProfileView(),
+    HomePage(),
+    MessagePage(),
+    AppliedPage(),
+    SavedPage(),
+    ProfilePage(),
   ];
   @override
   Widget build(BuildContext context) {

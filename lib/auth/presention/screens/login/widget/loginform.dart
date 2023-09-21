@@ -29,8 +29,7 @@ class _LoginFormState extends State<LoginForm> {
       child: Column(
         children: [
           CustomTextField(
-            isEmpty: true,
-            isvalid: false,
+            isBold: false,
             ispassword: false,
             hint: 'Username',
             iconname: 'profile',
@@ -53,8 +52,7 @@ class _LoginFormState extends State<LoginForm> {
             height: 16.h,
           ),
           CustomTextField(
-            isEmpty: true,
-            isvalid: false,
+            isBold: false,
             ispassword: ishide,
             hint: 'Passwoed',
             iconname: 'lock',
