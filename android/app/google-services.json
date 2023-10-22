@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "90853832068",
+    "project_id": "jopsque-aa40c",
+    "storage_bucket": "jopsque-aa40c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90853832068:android:c21c7563c7159fe71dd9d1",
+        "android_client_info": {
+          "package_name": "com.example.findjop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90853832068-l1eduicok6r4vikcl0mm5tap0tqh5gde.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_PXspmPbA_jwjtsuOjORz3LMexaOfNLc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90853832068-l1eduicok6r4vikcl0mm5tap0tqh5gde.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "90853832068-r36kvn41ljb3cav6tcob8k8ulfjvvq3c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.findjop"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
