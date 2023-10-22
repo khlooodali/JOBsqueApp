@@ -7,8 +7,8 @@ import 'jopcategoryitem.dart';
 import 'titlejopofitem.dart';
 
 class SuggestedJopItem extends StatelessWidget {
-  const SuggestedJopItem({super.key});
-
+  const SuggestedJopItem({super.key, required this.index});
+  final int index;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,14 +22,20 @@ class SuggestedJopItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const JopItemTitle(
+            JopItemTitle(
               isSuggest: true,
+              index: index,
             ),
-            JopCategory(isSuggest: true),
+            JopCategory(
+              isSuggest: true,
+              index: index,
+            ),
             SizedBox(
               height: 20.h,
             ),
-            const ApplyForJop()
+            ApplyForJop(
+              index: index,
+            )
           ],
         ),
       ),

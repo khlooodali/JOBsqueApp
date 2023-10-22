@@ -1,37 +1,20 @@
 import 'package:findjop/core/theme/appcolors.dart';
+import 'package:findjop/jop/presention/Screens/searchjop/widgets/searchinput.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../core/customwidgets/helpermethod/navigationwithanimate.dart';
 import '../../../jop/presention/Screens/searchjop/searchview.dart';
 
 class CustomSearchInput extends StatelessWidget {
   const CustomSearchInput({super.key});
-  Route _createRoute() {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) =>
-          const SearchView(),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(0.0, 1.0);
-        const end = Offset.zero;
-        const curve = Curves.ease;
-
-        var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(_createRoute());
+        Navigator.of(context).push(createRoute(const SearchView()));
       },
       child: Container(
         height: 48.h,

@@ -3,102 +3,83 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 List<LocationItem> locationlist = [
-  LocationItem(
+  const LocationItem(
     countryCode: 'us',
     countryName: 'United States',
-    isselected: true,
-    tap: () {},
   ),
-  LocationItem(
+  const LocationItem(
     countryCode: 'my',
     countryName: 'Malaysia',
-    isselected: false,
-    tap: () {},
   ),
-  LocationItem(
+  const LocationItem(
     countryCode: 'sg',
     countryName: 'Singapore',
-    isselected: false,
-    tap: () {},
   ),
-  LocationItem(
+  const LocationItem(
     countryCode: 'id',
     countryName: 'Indonesia',
-    isselected: true,
-    tap: () {},
   ),
-  LocationItem(
+  const LocationItem(
     countryCode: 'PH',
     countryName: 'Philiphines',
-    isselected: true,
-    tap: () {},
   ),
-  LocationItem(
+  const LocationItem(
     countryCode: 'PL',
     countryName: 'Polandia',
-    isselected: false,
-    tap: () {},
   ),
-  LocationItem(
+  const LocationItem(
     countryCode: 'in',
     countryName: 'India',
-    isselected: false,
-    tap: () {},
   ),
-  LocationItem(
+  const LocationItem(
     countryCode: 'VN',
     countryName: 'Vietnam',
-    isselected: false,
-    tap: () {},
   ),
-  LocationItem(
+  const LocationItem(
     countryCode: 'CN',
     countryName: 'China',
-    isselected: false,
-    tap: () {},
   ),
-  LocationItem(
+  const LocationItem(
     countryCode: 'ca',
     countryName: 'Canada',
-    isselected: true,
-    tap: () {},
   ),
-  LocationItem(
+  const LocationItem(
     countryCode: 'SA',
     countryName: 'Saudi Arabia',
-    isselected: true,
-    tap: () {},
   ),
-  LocationItem(
+  const LocationItem(
     countryCode: 'AR',
     countryName: 'Argentina',
-    isselected: false,
-    tap: () {},
   ),
-  LocationItem(
+  const LocationItem(
     countryCode: 'br',
     countryName: 'Brazil',
-    isselected: false,
-    tap: () {},
   ),
 ];
 
-class LocationItem extends StatelessWidget {
-  final bool isselected;
+class LocationItem extends StatefulWidget {
   final String countryName;
   final String countryCode;
-  final VoidCallback tap;
 
-  const LocationItem(
-      {super.key,
-      required this.isselected,
-      required this.countryName,
-      required this.countryCode,
-      required this.tap});
+  const LocationItem({
+    super.key,
+    required this.countryName,
+    required this.countryCode,
+  });
+
+  @override
+  State<LocationItem> createState() => _LocationItemState();
+}
+
+class _LocationItemState extends State<LocationItem> {
+  bool isselected = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: tap,
+      onTap: () {
+        isselected = !isselected;
+        setState(() {});
+      },
       child: Container(
         height: 45.h,
         // width: 151.w,
@@ -120,13 +101,13 @@ class LocationItem extends StatelessWidget {
             children: [
               //CircleFlag(countryCode),
               Text(
-                getCountryflag(countryCode),
+                getCountryflag(widget.countryCode),
               ),
               SizedBox(
                 width: 8.w,
               ),
               Text(
-                countryName,
+                widget.countryName,
                 style: Theme.of(context).textTheme.displayLarge,
               )
             ],

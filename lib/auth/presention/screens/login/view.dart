@@ -33,7 +33,7 @@ class LoginView extends StatelessWidget {
               const LoginForm(),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 20.h),
-                child: const SignUpWithSocialView(
+                child: SignUpWithSocialView(
                   operationName: 'Login',
                 ),
               ),

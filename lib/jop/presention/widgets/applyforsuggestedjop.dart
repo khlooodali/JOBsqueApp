@@ -5,15 +5,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/customwidgets/custombttn/view.dart';
 
 class ApplyForJop extends StatelessWidget {
-  const ApplyForJop({super.key});
-
+  const ApplyForJop({super.key, required this.index});
+  final int index;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         //price per month
-        const PriceOfJopItem(isSuggested: true),
+        PriceOfJopItem(
+          isSuggested: true,
+          index: index,
+        ),
         CusttomButton(
           ontapped: () {},
           text: 'Apply Now',

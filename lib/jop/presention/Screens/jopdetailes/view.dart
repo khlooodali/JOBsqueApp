@@ -1,5 +1,6 @@
 import 'package:findjop/jop/presention/Screens/jopdetailes/companydetailesview.dart';
 import 'package:findjop/jop/presention/Screens/jopdetailes/peopledetailesview.dart';
+import 'package:findjop/jop/presention/model/jopmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,14 +12,19 @@ import 'widgets/detailesitem.dart';
 import 'widgets/detailesoption.dart';
 
 class JopDetailesView extends StatefulWidget {
-  const JopDetailesView({super.key});
-
+  const JopDetailesView({
+    super.key,
+    required this.jopindex,
+  });
+  final int jopindex;
+  // final JopModel model;
   @override
   State<JopDetailesView> createState() => _JopDetailesViewState();
 }
 
 class _JopDetailesViewState extends State<JopDetailesView> {
   int index = 0;
+
   bool isCompany = false;
   bool ispeople = false;
   bool isDescription = true;
@@ -81,13 +87,17 @@ class _JopDetailesViewState extends State<JopDetailesView> {
     );
   }
 
-  List<Widget> options = [
-    const JopDescrebtion(),
-    const CompanyDetailes(),
-    const PeopleDetailes()
-  ];
   @override
   Widget build(BuildContext context) {
+    List<Widget> options = [
+      JopDescrebtion(
+        index: widget.jopindex,
+      ),
+      CompanyDetailes(
+        index: widget.jopindex,
+      ),
+      const PeopleDetailes()
+    ];
     return SafeArea(
       child: Scaffold(
         appBar: getAppbarJop(context, 'Job Detail'),
@@ -96,26 +106,27 @@ class _JopDetailesViewState extends State<JopDetailesView> {
           child: Stack(
             //direction: Axis.vertical,
             children: [
-              SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Center(
-                      child:
-                          Positioned(top: 32.h, child: const DetailesJopItem()),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 32.h),
-                      child: DetailesOptions(),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 24.h),
-                      child: options[index],
-                    ),
-                  ],
-                ),
+              Column(
+                children: [
+                  Center(
+                    child: Positioned(
+                        top: 32.h,
+                        child: DetailesJopItem(
+                          index: widget.jopindex,
+                        )),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 32.h),
+                    child: DetailesOptions(),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 24.h),
+                    child: options[index],
+                  ),
+                ],
               ),
               Positioned(
-                bottom: 10.h,
+                bottom: 20.h,
                 child: CusttomButton(
                   ontapped: () {},
                   text: 'Apply now',

@@ -1,3 +1,6 @@
+import 'package:findjop/auth/presention/screens/createaccount/view.dart';
+import 'package:findjop/auth/presention/screens/login/view.dart';
+import 'package:findjop/core/customwidgets/helpermethod/navigatetonextpage.dart';
 import 'package:flutter/material.dart';
 
 class GoBackView extends StatelessWidget {
@@ -24,7 +27,8 @@ class GoBackView extends StatelessWidget {
         ),
         TextButton(
             onPressed: () {
-              //navigate
+              nextTo(
+                  context, islogin ? CreateAccountView() : const LoginView());
             },
             child: Text(
               islogin ? 'Register' : 'Login',

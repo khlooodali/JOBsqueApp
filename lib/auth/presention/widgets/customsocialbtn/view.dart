@@ -8,9 +8,9 @@ class CustomOutLineIconBtnn extends StatelessWidget {
       required this.ontap,
       required this.icon,
       required this.label});
-  final VoidCallback ontap;
+  final VoidCallback? ontap;
   final String icon;
-  final String label;
+  final Widget label;
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +18,12 @@ class CustomOutLineIconBtnn extends StatelessWidget {
       width: 154.w,
       height: 46.h,
       child: OutlinedButton.icon(
-        onPressed: ontap,
-        icon: SvgPicture.asset(
-          'assets/icons/$icon.svg',
-          fit: BoxFit.scaleDown,
-        ),
-        label: Text(
-          label,
-          style: Theme.of(context).textTheme.labelLarge,
-        ),
-      ),
+          onPressed: ontap,
+          icon: SvgPicture.asset(
+            'assets/icons/$icon.svg',
+            fit: BoxFit.scaleDown,
+          ),
+          label: label),
     );
   }
 }

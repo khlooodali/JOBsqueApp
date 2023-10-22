@@ -8,7 +8,8 @@ class PasswordChangedSuccesfully extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SuccessOperationView(
-      bttnText: 'Open email app',
+      isbuttn: false,
+      bttnText: '',
       iconName: 'Password Succesfully',
       ontap: () {},
       title: 'Password changed succesfully!',

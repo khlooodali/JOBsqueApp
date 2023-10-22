@@ -1,11 +1,12 @@
+import 'package:findjop/auth/presention/screens/login/view.dart';
 import 'package:findjop/core/constant/strings.dart';
 import 'package:findjop/core/customwidgets/custombttn/view.dart';
+import 'package:findjop/core/customwidgets/helpermethod/navigatetonextpage.dart';
 import 'package:findjop/onboarding/on_bording/widgets/customindicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../auth/presention/screens/createaccount/view.dart';
 import 'custompageview/view.dart';
 
 class OnBordingBodyView extends StatefulWidget {
@@ -44,7 +45,9 @@ class _OnBordingBodyViewState extends State<OnBordingBodyView> {
               SizedBox(
                   width: 81.w, height: 19.h, child: SvgPicture.asset(logopath)),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    nextTo(context, const LoginView(), iskeep: false);
+                  },
                   child: Text(
                     'Skip',
                     style: Theme.of(context).textTheme.titleSmall,
@@ -68,10 +71,7 @@ class _OnBordingBodyViewState extends State<OnBordingBodyView> {
               isActive: true,
               ontapped: () {
                 if (_controller.page == 2) {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return CreateAccountView();
-                  }));
+                  nextTo(context, const LoginView(), iskeep: false);
                 } else {
                   _controller.nextPage(
                       duration: const Duration(milliseconds: 500),

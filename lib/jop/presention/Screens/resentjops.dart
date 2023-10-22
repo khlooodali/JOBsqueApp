@@ -1,6 +1,10 @@
 //listviewof jop item
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
 
+import '../controller/cubit/jop_cubit.dart';
 import '../widgets/jopitem.dart';
 
 class ResentJops extends StatelessWidget {
@@ -8,17 +12,36 @@ class ResentJops extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height,
-      //list.length.toDouble(),
+    return Builder(builder: (context) {
+      JopCubit cubit = BlocProvider.of(context);
 
-      width: MediaQuery.of(context).size.width,
-      child: ListView.builder(
-          scrollDirection: Axis.vertical,
-          itemCount: 3,
-          itemBuilder: ((context, index) {
-            return const JopItem();
-          })),
-    );
+      return BlocBuilder<JopCubit, JopStates>(
+        builder: (context, state) {
+          if (state is JopLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+            // Shimmer.fromColors(
+            //     enabled: true,
+            //     baseColor: Colors.grey.shade300,
+            //     highlightColor: Colors.grey.shade100,
+            //     child: const ListTile());
+          } else if (state is JopLoadedSuccessfully) {
+            return SizedBox(
+              height: 500.h,
+              child: ListView.builder(
+                  itemCount: cubit.jopModel.jop.length,
+                  itemBuilder: (context, index) {
+                    return JopItem(index: index);
+                  }),
+            );
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
+      );
+    });
   }
 }

@@ -1,8 +1,10 @@
+import 'package:findjop/core/customwidgets/helpermethod/navigatetonextpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/customwidgets/custombttn/view.dart';
 import '../../widgets/title.dart';
+import 'sucessaccount.dart';
 import 'widget/locatonwhere.dart';
 import 'widget/selectlocation.dart';
 
@@ -43,7 +45,10 @@ class PreferedLocatonView extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(top: 65.h),
               child: CusttomButton(
-                ontapped: () {},
+                ontapped: () {
+                  nextTo(context, const SucessCreateAccount(),
+                      isreplace: false);
+                },
                 text: 'Next',
                 isActive: true,
                 width: MediaQuery.sizeOf(context).width,

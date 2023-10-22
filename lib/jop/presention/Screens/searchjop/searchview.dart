@@ -17,8 +17,10 @@ class SearchView extends StatelessWidget {
           child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SearchInput()
-              //searchinput
+              // SearchInput(
+              //   ontap: () {},
+              // ),
+
               //typesearch resent
               //resentsearches
               //typesearch popular

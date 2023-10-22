@@ -1,5 +1,8 @@
+import 'package:findjop/auth/presention/controller/cubit/cubit/auth_cubit.dart';
 import 'package:findjop/core/theme/appcolors.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'customsocialbtn/view.dart';
@@ -7,6 +10,7 @@ import 'customsocialbtn/view.dart';
 class SignUpWithSocialView extends StatelessWidget {
   const SignUpWithSocialView({super.key, required this.operationName});
   final String operationName;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,10 +40,40 @@ class SignUpWithSocialView extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CustomOutLineIconBtnn(
-                ontap: () {}, icon: 'google', label: 'Google'),
-            CustomOutLineIconBtnn(
-                ontap: () {}, icon: 'Facebook', label: 'Facebook')
+            BlocConsumer<AuthCubit, AuthState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                return CustomOutLineIconBtnn(
+                  ontap: state is GoogleAuthLoadingState
+                      ? null
+                      : () => context.read<AuthCubit>().loginWithGoogle(),
+                  icon: 'google',
+                  label: state is GoogleAuthLoadingState
+                      ? const CircularProgressIndicator()
+                      : Text(
+                          'Google',
+                          style: Theme.of(context).textTheme.labelLarge,
+                        ),
+                );
+              },
+            ),
+            BlocConsumer<AuthCubit, AuthState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                return CustomOutLineIconBtnn(
+                  ontap: state is FacebookAuthLoadingState
+                      ? null
+                      : () => context.read<AuthCubit>().loginWithFacebook(),
+                  icon: 'Facebook',
+                  label: state is FacebookAuthLoadingState
+                      ? const CircularProgressIndicator()
+                      : Text(
+                          'Facebook',
+                          style: Theme.of(context).textTheme.labelLarge,
+                        ),
+                );
+              },
+            ),
           ],
         ),
         SizedBox(
