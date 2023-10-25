@@ -1,3 +1,4 @@
+import 'package:findjop/core/customwidgets/helpermethod/navigatetonextpage.dart';
 import 'package:findjop/jop/presention/Screens/jopdetailes/companydetailesview.dart';
 import 'package:findjop/jop/presention/Screens/jopdetailes/peopledetailesview.dart';
 import 'package:findjop/jop/presention/model/jopmodel.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/customwidgets/custombttn/view.dart';
 import '../../../../core/theme/appcolors.dart';
+import '../applyjop/view.dart';
 import 'describtionview.dart';
 import 'widgets/customappbarforjop.dart';
 import 'widgets/detailesitem.dart';
@@ -128,7 +130,7 @@ class _JopDetailesViewState extends State<JopDetailesView> {
               Positioned(
                 bottom: 20.h,
                 child: CusttomButton(
-                  ontapped: () {},
+                  ontapped: () {nextTo(context,ApplyJopView() );},
                   text: 'Apply now',
                   isActive: true,
                   width: 327.w,

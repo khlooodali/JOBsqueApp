@@ -16,6 +16,7 @@ class JopCubit extends Cubit<JopStates> {
   }
 
   late JopModel jopModel;
+
   //late JopModel jopNamedModel;
 
   void getAllJops() async {

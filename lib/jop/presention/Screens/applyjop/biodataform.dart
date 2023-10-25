@@ -28,7 +28,7 @@ class _BioDataFormState extends State<BioDataForm> {
             Column(
               children: [
                 SpecialTextFiled(
-                  hint: 'Rafif Dian Axelingga',
+                  hint: '',
                   isStar: true,
                   controller: _nameController,
                   iconName: 'profile',
@@ -36,13 +36,13 @@ class _BioDataFormState extends State<BioDataForm> {
                 ),
                 SpecialTextFiled(
                   isStar: true,
-                  hint: 'rafifdian12@gmail.com',
+                  hint: '',
                   controller: _emailController,
                   iconName: 'sms',
                   text: 'Email',
                 ),
                 CountryFiled(
-                    hint: '0100-666-7234',
+                    hint: '',
                     controller: _phoneController,
                     isStar: true,
                     text: 'No.Handphone'),

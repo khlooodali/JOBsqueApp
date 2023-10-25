@@ -22,11 +22,6 @@ class SuggestedJops extends StatelessWidget {
               return const Center(
                 child: CircularProgressIndicator(),
               );
-              // Shimmer.fromColors(
-              //     enabled: true,
-              //     baseColor: Colors.grey.shade300,
-              //     highlightColor: Colors.grey.shade100,
-              //     child: const ListTile());
             } else if (state is JopLoadedSuccessfully) {
               return ListView.separated(
                   separatorBuilder: (context, index) {

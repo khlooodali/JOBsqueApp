@@ -19,39 +19,44 @@ class WelcomView extends StatefulWidget {
 
 class _WelcomViewState extends State<WelcomView> {
   var parser = EmojiParser();
-  // String? name;
+   String? name;
 
   @override
   Widget build(BuildContext context) {
-    // if (name == null) {
-    //   SharedPreferences.getInstance().then((value) {
-    //     setState(() {
-    //       name = value.getString(userName);
-    //     });
-    //   });
-    // }
+    if (name == null) {
+      SharedPreferences.getInstance().then((value) {
+        setState(() {
+          name = value.getString(userName);
+        });
+      });
+    }
     var welcomeEmoji = parser.emojify(':wave:');
     return Builder(builder: (context) {
       AuthCubit userCubit = BlocProvider.of(context);
       return ListTile(
         title: Row(
           children: [
-            BlocBuilder<AuthCubit, AuthState>(
-              builder: (context, state) {
-                if (state is LoadingState) {
-                  return const Text('');
-                }
-                if (state is SuccessRequsetState) {
-                  return Text(
-                    userCubit.userProfile.data.name,
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  );
-                }
-                return const Text(
-                  '',
-                );
-              },
-            ),
+          Text(
+            (name==null)?'':name!,
+          style: Theme.of(context).textTheme.headlineMedium,
+               ),
+            //using profile data           //latalization errorrrrr
+            // BlocBuilder<AuthCubit, AuthState>(
+            //   builder: (context, state) {
+            //     if (state is LoadingState) {
+            //       return const Text('');
+            //     }
+            //     if (state is SuccessRequsetState) {
+            //       return Text(
+            //         userCubit.userProfile.data.name,
+            //         style: Theme.of(context).textTheme.headlineMedium,
+            //       );
+            //     }
+            //     return const Text(
+            //       '',
+            //     );
+            //   },
+            // ),
             Text(
               welcomeEmoji,
               style: Theme.of(context).textTheme.headlineMedium,

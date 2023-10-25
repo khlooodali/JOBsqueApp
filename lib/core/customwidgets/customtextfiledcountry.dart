@@ -36,6 +36,7 @@ class CountryFiled extends StatelessWidget {
                 height: 6.h,
               ),
         Container(
+          height: 56.h,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               border: Border.all(color: AppColor.naturalColor300, width: 1)),

@@ -108,7 +108,10 @@ class _ApplyJopViewState extends State<ApplyJopView> {
               bottom: 10.h,
               child: CusttomButton(
                 ontapped: () {
-                  contnio();
+                  if (currentstep == 2) {
+                  } else {
+                    contnio();
+                  }
                 },
                 text: currentstep == 2 ? 'Submit' : 'Next',
                 isActive: true,

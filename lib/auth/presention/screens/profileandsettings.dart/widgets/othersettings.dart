@@ -1,5 +1,9 @@
+import 'package:findjop/core/customwidgets/helpermethod/navigatetonextpage.dart';
 import 'package:flutter/material.dart';
 
+import '../helpcenter.dart';
+import '../privcypolicy.dart';
+import '../termsandcondtion.dart';
 import 'settingsitem.dart';
 
 class OtherSettings extends StatelessWidget {
@@ -15,17 +19,23 @@ class OtherSettings extends StatelessWidget {
           settingName: 'Accesibility',
         ),
         SettingItem(
-            ontap: () {},
+            ontap: () {
+              nextTo(context, HelpCenter(),isreplace: true);
+            },
             isIcon: false,
             settingName: 'Help Center',
             iconName: 'folder-favorite'),
         SettingItem(
-            ontap: () {},
+            ontap: () {
+              nextTo(context, TermsAndCondtions(),isreplace: true);
+            },
             isIcon: false,
             settingName: 'Terms & Conditions',
             iconName: 'notificationb'),
         SettingItem(
-          ontap: () {},
+          ontap: () {
+            nextTo(context, PrivcyAndPolicy(),isreplace: true);
+          },
           isIcon: false,
           settingName: 'Privacy Policy',
         ),
