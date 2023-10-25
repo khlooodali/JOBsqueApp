@@ -124,7 +124,7 @@ class MyApp extends StatelessWidget {
               //GlobalWidgetsLocalizations.delegate,
             ],
             debugShowCheckedModeBanner: false,
-            title: 'FindJop',
+            title: 'JOBSQUE',
             theme: getLightTheme(),
             home: child,
           ),
