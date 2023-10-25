@@ -219,7 +219,7 @@ class AuthCubit extends Cubit<AuthState> {
           await dio.get('https://project2.amit-learning.com/api/auth/profile',
               options: Options(headers: {
                 "Authorization":
-                    'Bearer 1470|znuNltBWiH1KSdX9JEY9PU8k5PCgurOQsK2oiSDA',
+                    'Bearer $token',
                 "Accept": "application/json"
               }));
 

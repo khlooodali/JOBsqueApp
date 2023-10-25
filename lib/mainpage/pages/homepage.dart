@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 20.h),
-          child:ResentJops() //const SuggestedJops(),note replace with suggested
+          child: const SuggestedJops(),
         ),
         ViewAllWidget(
           title: 'Resent Job',
