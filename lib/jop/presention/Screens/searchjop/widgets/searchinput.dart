@@ -8,9 +8,12 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../../core/theme/appcolors.dart';
 
 class SearchInput extends StatefulWidget {
-  const SearchInput({super.key, required this.ontap, required this.controller});
+  const SearchInput({
+    super.key,
+    required this.ontap,
+  });
   final VoidCallback ontap;
-  final TextEditingController controller;
+  //final TextEditingController controller;
   @override
   State<SearchInput> createState() => _SearchInputState();
 }
@@ -41,7 +44,7 @@ class _SearchInputState extends State<SearchInput> {
           showCursor: true,
           cursorColor: AppColor.primaryColor500,
           cursorHeight: 20,
-          controller: widget.controller,
+          //controller: widget.controller,
           keyboardType: TextInputType.text,
           decoration: InputDecoration(
             filled: true,
@@ -67,7 +70,7 @@ class _SearchInputState extends State<SearchInput> {
                 ? const SizedBox()
                 : InkWell(
                     onTap: () {
-                      widget.controller.clear();
+                      //widget.controller.clear();
                     },
                     child: SvgPicture.asset(
                       'assets/icons/close.svg',

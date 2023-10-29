@@ -1,4 +1,5 @@
 import 'package:file_picker/file_picker.dart';
+import 'package:findjop/core/theme/appcolors.dart';
 
 import 'package:flutter/material.dart';
 
@@ -53,6 +54,8 @@ class _UploadPortfolioState extends State<UploadPortfolio> {
             subtitle: 'Fill in your bio data correctly'),
         const titleFiled(
           title: 'Upload CV',
+          isdarktitle: true,
+          isredStar: true,
         ),
         const SizedBox(
           height: 12,

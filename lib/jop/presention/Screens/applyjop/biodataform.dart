@@ -1,3 +1,4 @@
+import 'package:findjop/core/theme/appcolors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/customwidgets/customtextfiledcountry.dart';
@@ -28,6 +29,8 @@ class _BioDataFormState extends State<BioDataForm> {
             Column(
               children: [
                 SpecialTextFiled(
+                  isdark: true,
+                  isred: true,
                   hint: '',
                   isStar: true,
                   controller: _nameController,
@@ -35,6 +38,8 @@ class _BioDataFormState extends State<BioDataForm> {
                   text: 'Full Name',
                 ),
                 SpecialTextFiled(
+                  isdark: true,
+                  isred: true,
                   isStar: true,
                   hint: '',
                   controller: _emailController,

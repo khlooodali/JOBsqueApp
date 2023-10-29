@@ -23,9 +23,7 @@ class TowStepVerificationOtpView extends StatefulWidget {
 class _TowStepVerificationOtpViewState
     extends State<TowStepVerificationOtpView> {
   final OtpFieldController _controller = OtpFieldController();
-  bool isverivyed = false;
 
-  String? code;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,21 +58,6 @@ class _TowStepVerificationOtpViewState
                 fieldStyle: FieldStyle.box,
                 onCompleted: (String pincode) {
                   print("Completed: $pincode");
-
-                  if (code == null) {
-                    SharedPreferences.getInstance().then((value) {
-                      code = value.getString(otpCode);
-                      setState(() {});
-                    });
-                  } else {
-                    code = otpCode;
-                    setState(() {});
-                  }
-
-                  if (pincode.contains(code!)) {
-                    isverivyed = true;
-                    setState(() {});
-                  }
                 },
               ),
             ),
@@ -97,8 +80,6 @@ class _TowStepVerificationOtpViewState
             const Spacer(),
             CusttomButton(
                 ontapped: () {
-                  print("otpcode $code");
-
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                       backgroundColor: AppColor.successColor700,
                       content:

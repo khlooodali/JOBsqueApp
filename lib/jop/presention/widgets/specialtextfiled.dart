@@ -5,16 +5,21 @@ import 'package:flutter_svg/svg.dart';
 import '../../../core/theme/appcolors.dart';
 
 class SpecialTextFiled extends StatelessWidget {
-  const SpecialTextFiled(
-      {super.key,
-      required this.text,
-      required this.iconName,
-      required this.controller,
-      this.validation,
-      this.onchange,
-      required this.isStar,
-      required this.hint});
+  const SpecialTextFiled({
+    super.key,
+    required this.text,
+    required this.iconName,
+    required this.controller,
+    this.validation,
+    this.onchange,
+    required this.isStar,
+    required this.hint,
+    required this.isred,
+    required this.isdark,
+  });
   final String text;
+  final bool isred;
+  final bool isdark;
   final bool isStar;
   final String hint;
   final String iconName;
@@ -27,7 +32,11 @@ class SpecialTextFiled extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         isStar
-            ? titleFiled(title: text)
+            ? titleFiled(
+                title: text,
+                isredStar: isred,
+                isdarktitle: isdark,
+              )
             : Text(
                 text,
                 style: Theme.of(context).inputDecorationTheme.hintStyle,
@@ -81,9 +90,13 @@ class titleFiled extends StatelessWidget {
   const titleFiled({
     super.key,
     required this.title,
+    required this.isdarktitle,
+    required this.isredStar,
   });
 
   final String title;
+  final bool isredStar;
+  final bool isdarktitle;
 
   @override
   Widget build(BuildContext context) {
@@ -91,12 +104,16 @@ class titleFiled extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(fontSize: 16, color: AppColor.naturalColor900),
+          style: TextStyle(
+              fontSize: 16,
+              color: isdarktitle
+                  ? AppColor.naturalColor900
+                  : AppColor.naturalColor400),
         ),
-        const Icon(
+        Icon(
           Icons.star,
           size: 10,
-          color: AppColor.dangerColor500,
+          color: isredStar ? AppColor.dangerColor500 : AppColor.naturalColor400,
         ),
       ],
     );

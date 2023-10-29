@@ -5,6 +5,8 @@ import 'package:findjop/auth/presention/screens/createaccount/typejopview.dart';
 import 'package:findjop/auth/presention/screens/login/view.dart';
 import 'package:findjop/core/appcontainer.dart';
 import 'package:findjop/core/theme/apptheme.dart';
+import 'package:findjop/experiance/controller/cubit/experince_cubit_cubit.dart';
+import 'package:findjop/experiance/view.dart';
 import 'package:findjop/jop/presention/Screens/displayalljops/view.dart';
 import 'package:findjop/jop/presention/controller/cubit/jop_cubit.dart';
 import 'package:findjop/jop/presention/model/jopmodel.dart';
@@ -44,6 +46,7 @@ class MyApp extends StatelessWidget {
           providers: [
             BlocProvider(create: (_) => AuthCubit()),
             BlocProvider(create: (_) => JopCubit()),
+            BlocProvider(create: (_) => ExperinceCubitCubit()),
           ],
           child: MaterialApp(
             supportedLocales: const [

@@ -115,7 +115,7 @@ class AuthCubit extends Cubit<AuthState> {
       prefs.setString(token, response.data["token"]);
 
       prefs.setString(userName, response.data["user"]["name"].toString());
-      prefs.setString(userEmail, response.data["user"]["email"].toString());
+      prefs.setInt(userId as String, response.data["user"]["id"]);
 
       return response.data;
     } on DioError catch (e) {
@@ -215,13 +215,12 @@ class AuthCubit extends Cubit<AuthState> {
 
     try {
       emit(LoadingState());
-      final response =
-          await dio.get('https://project2.amit-learning.com/api/auth/profile',
-              options: Options(headers: {
-                "Authorization":
-                    'Bearer $token',
-                "Accept": "application/json"
-              }));
+      final response = await dio.get(
+          'https://project2.amit-learning.com/api/auth/profile',
+          options: Options(headers: {
+            "Authorization": 'Bearer $token',
+            "Accept": "application/json"
+          }));
 
       print(response.data);
 

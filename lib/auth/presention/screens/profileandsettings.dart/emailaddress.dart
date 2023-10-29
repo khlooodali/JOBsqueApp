@@ -37,7 +37,7 @@ class EmailAddressView extends StatelessWidget {
             ),
             CustomTextField(
               isBold: true,
-              hint: userEmail,
+              hint: '',
               iconname: 'sms',
               controller: _emailController,
               validation: (value) {

@@ -14,21 +14,27 @@ class EditProfileForm extends StatelessWidget {
     return Column(
       children: [
         SpecialTextFiled(
+            isdark: true,
             controller: _nameController,
             iconName: '',
             isStar: false,
+            isred: false,
             text: 'Name',
             hint: 'Rafif Dian Axelingga'),
         SpecialTextFiled(
             controller: _bioController,
             iconName: '',
             isStar: false,
+            isdark: true,
+            isred: false,
             text: 'Bio',
             hint: 'Senior UI/UX Designer'),
         SpecialTextFiled(
           controller: _addressController,
           iconName: '',
           isStar: false,
+          isred: false,
+          isdark: true,
           text: 'Adress',
           hint: 'Ranjingan, Wangon, Wasington City',
         ),

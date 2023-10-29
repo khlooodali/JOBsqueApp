@@ -23,7 +23,11 @@ class CountryFiled extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         isStar
-            ? titleFiled(title: text)
+            ? titleFiled(
+                title: text,
+                isdarktitle: true,
+                isredStar: true,
+              )
             : Text(
                 text,
                 style: Theme.of(context).inputDecorationTheme.hintStyle,
