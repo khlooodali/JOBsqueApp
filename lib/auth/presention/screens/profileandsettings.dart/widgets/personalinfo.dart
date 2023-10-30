@@ -1,3 +1,4 @@
+import 'package:findjop/core/constant/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -23,7 +24,7 @@ class PersonalInfo extends StatelessWidget {
             height: 16.h,
           ),
           Text(
-            'Rafif Dian Axelingga',
+            userName,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodySmall,
           ),

@@ -63,6 +63,10 @@ class _UploadPortfolioState extends State<UploadPortfolio> {
         fileName == null
             ? const SizedBox()
             : DisplayPdf(
+                ontap: () {
+                  fileName = null;
+                  setState(() {});
+                },
                 filename: fileName!,
                 filesize: fileSizeKB!,
               ),

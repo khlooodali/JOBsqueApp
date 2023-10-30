@@ -23,7 +23,7 @@ class _TowStepVerficationViewState extends State<TowStepVerficationView> {
       appBar: AppBarWithoutIcon(
           context: context,
           ontap: () {
-            nextTo(context, const ProfileAndSettingsView(), isreplace: true);
+            nextTo(context, ProfileAndSettingsView(), isreplace: true);
           },
           title: 'Two-step verification'),
       body: Padding(

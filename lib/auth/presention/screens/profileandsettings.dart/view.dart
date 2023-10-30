@@ -21,7 +21,7 @@ class ProfileAndSettingsView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const PersonalInfo(),
+                  PersonalInfo(),
                   Padding(
                     padding: EdgeInsets.only(top: 36.h, bottom: 16.h),
                     child: const OptionTitle(

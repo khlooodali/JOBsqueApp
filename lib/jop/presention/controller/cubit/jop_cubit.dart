@@ -25,13 +25,12 @@ class JopCubit extends Cubit<JopStates> {
 
     try {
       emit(JopLoading());
-      final response =
-          await dio.get('https://project2.amit-learning.com/api/jobs',
-              options: Options(headers: {
-                "Authorization":
-                    "Bearer 1470|znuNltBWiH1KSdX9JEY9PU8k5PCgurOQsK2oiSDA",
-                "Accept": "application/json"
-              }));
+      final response = await dio.get(
+          'https://project2.amit-learning.com/api/jobs',
+          options: Options(headers: {
+            "Authorization": "Bearer $usertoken",
+            "Accept": "application/json"
+          }));
 
       print(response.data);
       jopModel = JopModel.fromJson(response.data);

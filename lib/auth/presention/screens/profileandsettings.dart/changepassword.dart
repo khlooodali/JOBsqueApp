@@ -34,15 +34,15 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
         appBar: AppBarWithoutIcon(
             context: context,
             ontap: () {
-              nextTo(context, const ProfileAndSettingsView(), isreplace: true);
+              nextTo(context, ProfileAndSettingsView(), isreplace: true);
             },
             title: 'Change Password'),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Form(
             key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: ListView(
+              //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   height: 44.h,

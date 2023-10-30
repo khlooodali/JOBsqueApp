@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -6,23 +8,41 @@ class ChangePhoto extends StatelessWidget {
   const ChangePhoto({
     super.key,
     required this.ontap,
+    required this.imagepath,
   });
   final VoidCallback ontap;
+  final String? imagepath;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
         children: [
-          CircleAvatar(
-            radius: 45,
-            backgroundImage: const AssetImage('assets/images/Profile.png'),
-            child: Center(
-              child: SvgPicture.asset(
-                'assets/icons/camera.svg',
-                width: 32.w,
-                height: 32.h,
-                fit: BoxFit.scaleDown,
+          Center(
+            child: Container(
+              width: 90.w,
+              height: 90.h,
+              clipBehavior: Clip.antiAlias,
+              decoration: const BoxDecoration(shape: BoxShape.circle),
+              child: Stack(
+                children: [
+                  (imagepath != null)
+                      ? Image.file(
+                          File(imagepath!),
+                          fit: BoxFit.scaleDown,
+                        )
+                      : Image.asset(
+                          "assets/images/Profile.png",
+                          fit: BoxFit.scaleDown,
+                        ),
+                  const Center(
+                    child: Icon(
+                      Icons.camera_alt,
+                      size: 25,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

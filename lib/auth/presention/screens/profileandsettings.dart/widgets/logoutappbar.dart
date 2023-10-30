@@ -1,3 +1,5 @@
+import 'package:findjop/core/constant/strings.dart';
+import 'package:findjop/core/customwidgets/helpermethod/navigatetonextpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';

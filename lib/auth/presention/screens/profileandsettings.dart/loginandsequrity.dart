@@ -57,7 +57,7 @@ class LoginAndSecurity extends StatelessWidget {
               nextTo(context, EmailAddressView());
             },
             title: 'Email address',
-            display: '',
+            display: userEmail,
           ),
           SecureItem(
             isDesplay: false,
@@ -125,7 +125,12 @@ class SecureItem extends StatelessWidget {
                   isDesplay
                       ? Text(
                           display!,
-                          style: Theme.of(context).textTheme.displaySmall,
+                          maxLines: 1,
+                          style: const TextStyle(
+                              overflow: TextOverflow.clip,
+                              fontSize: 12,
+                              color: AppColor.naturalColor400),
+                          //style: Theme.of(context).textTheme.displaySmall,
                         )
                       : const SizedBox(),
                   SizedBox(

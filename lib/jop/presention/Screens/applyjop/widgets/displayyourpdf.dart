@@ -5,9 +5,14 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../../core/theme/appcolors.dart';
 
 class DisplayPdf extends StatelessWidget {
-  const DisplayPdf({super.key, required this.filename, required this.filesize});
+  const DisplayPdf(
+      {super.key,
+      required this.filename,
+      required this.filesize,
+      required this.ontap});
   final String filename;
   final int filesize;
+  final VoidCallback ontap;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,8 +40,11 @@ class DisplayPdf extends StatelessWidget {
                       'assets/icons/edit-2.svg',
                       fit: BoxFit.scaleDown,
                     ),
-                    SvgPicture.asset('assets/icons/redclose.svg',
-                        fit: BoxFit.scaleDown),
+                    InkWell(
+                      onTap: ontap,
+                      child: SvgPicture.asset('assets/icons/redclose.svg',
+                          fit: BoxFit.scaleDown),
+                    ),
                   ],
                 ),
                 leading: Image.asset('assets/images/Logopdf.png'))),

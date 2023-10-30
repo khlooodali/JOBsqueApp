@@ -1,5 +1,6 @@
 import 'package:findjop/auth/presention/controller/cubit/cubit/auth_cubit.dart';
 import 'package:findjop/core/constant/strings.dart';
+import 'package:findjop/core/theme/appcolors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_emoji/flutter_emoji.dart';
@@ -31,19 +32,23 @@ class _WelcomViewState extends State<WelcomView> {
     //   });
     // }
     var welcomeEmoji = parser.emojify(':wave:');
-    return Builder(builder: (context) {
-      AuthCubit userCubit = BlocProvider.of(context);
-      return ListTile(
-        title: const Row(children: []),
-        subtitle: Padding(
-          padding: EdgeInsets.only(top: 8.h),
-          child: Text(
-            'Create a better future for yourself here',
-            style: Theme.of(context).textTheme.displaySmall,
-          ),
+
+    return ListTile(
+      title: Row(children: [
+        Text(
+          userName,
+          style: const TextStyle(fontSize: 20, color: AppColor.naturalColor900),
         ),
-        trailing: const NotificationItem(),
-      );
-    });
+        Text(welcomeEmoji),
+      ]),
+      subtitle: Padding(
+        padding: EdgeInsets.only(top: 8.h),
+        child: Text(
+          'Create a better future for yourself here',
+          style: Theme.of(context).textTheme.displaySmall,
+        ),
+      ),
+      trailing: const NotificationItem(),
+    );
   }
 }

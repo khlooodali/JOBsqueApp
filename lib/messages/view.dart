@@ -1,3 +1,5 @@
+import 'package:findjop/core/customwidgets/helpermethod/navigatetonextpage.dart';
+import 'package:findjop/mainpage/view.dart';
 import 'package:findjop/messages/widgets/messageitem.dart';
 import 'package:findjop/messages/widgets/searchandfillter.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +13,12 @@ class MessagesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppBarWithoutIcon(context: context, ontap: () {}, title: 'Messages'),
+      appBar: AppBarWithoutIcon(
+          context: context,
+          ontap: () {
+            nextTo(context, const MainPageView(), isreplace: true);
+          },
+          title: 'Messages'),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
         child: Column(

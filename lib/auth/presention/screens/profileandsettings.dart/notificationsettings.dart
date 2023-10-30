@@ -17,7 +17,7 @@ class NotificationSettings extends StatelessWidget {
       appBar: AppBarWithoutIcon(
           context: context,
           ontap: () {
-            nextTo(context, const ProfileAndSettingsView(), isreplace: true);
+            nextTo(context, ProfileAndSettingsView(), isreplace: true);
           },
           title: 'Notification'),
       body: SingleChildScrollView(

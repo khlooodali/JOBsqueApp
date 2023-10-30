@@ -23,7 +23,7 @@ class VerficationWithEmail extends StatelessWidget {
         appBar: AppBarWithoutIcon(
             context: context,
             ontap: () {
-              nextTo(context, const ProfileAndSettingsView(), isreplace: true);
+              nextTo(context, ProfileAndSettingsView(), isreplace: true);
             },
             title: 'Email address'),
         body: Padding(

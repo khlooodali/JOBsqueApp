@@ -109,15 +109,21 @@ class AuthCubit extends Cubit<AuthState> {
       );
 
       if (response.statusCode == 200) {
-        LoginModel? client = LoginModel.fromJson(jsonDecode(
-            CashHelper.preferences.get(CashHelper.userModelKey) as String));
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        // LoginModel? client = LoginModel.fromJson(jsonDecode(
+        //     CashHelper.preferences.get(CashHelper.userModelKey) as String));
         final model = LoginModel.fromJson(response.data);
 
-        CashHelper.saveLoginData(client);
-        print(client.token);
+        CashHelper.saveLoginData(model);
+        print(model.user.name);
+        usertoken = model.token;
+        userName = model.user.name;
+        userEmail = model.user.email;
         print('cashtoken:${CashHelper.getToken()}');
-        print('cashstatus:${CashHelper.getStatus()}');
+
         emit(LoginSuccess());
+        prefs.setString(userLoged, 'true');
+
         nextTo(context, const MainPageView(), isreplace: true);
 
         print(response.data);
@@ -143,7 +149,7 @@ class AuthCubit extends Cubit<AuthState> {
       var response = await dio.post(
         'https://project2.amit-learning.com/api/auth/user/update',
         options: Options(headers: {
-          "Authorization": 'Bearer ${CashHelper.getToken()}',
+          "Authorization": "Bearer $usertoken",
           "Accept": "application/json"
         }),
         data: {
@@ -172,6 +178,7 @@ class AuthCubit extends Cubit<AuthState> {
   void logoutUser(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.clear();
+
     nextTo(context, const LoginView());
   }
 
@@ -183,7 +190,7 @@ class AuthCubit extends Cubit<AuthState> {
       var response = await dio.post(
         'https://project2.amit-learning.com/api/auth/otp',
         options: Options(headers: {
-          "Authorization": 'Bearer ${CashHelper.getToken()}',
+          "Authorization": "Bearer $usertoken",
           "Accept": "application/json"
         }),
         data: {

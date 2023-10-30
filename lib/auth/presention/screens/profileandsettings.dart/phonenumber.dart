@@ -27,7 +27,7 @@ class _PhoneNumberViewState extends State<PhoneNumberView> {
       appBar: AppBarWithoutIcon(
           context: context,
           ontap: () {
-            nextTo(context, const ProfileAndSettingsView(), isreplace: true);
+            nextTo(context, ProfileAndSettingsView(), isreplace: true);
           },
           title: 'Phone Number'),
       body: Padding(

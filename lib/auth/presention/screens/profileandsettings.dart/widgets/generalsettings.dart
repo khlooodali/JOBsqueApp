@@ -24,7 +24,11 @@ class GeneralSettings extends StatelessWidget {
             iconName: 'profilefill'),
         SettingItem(
             ontap: () {
-              nextTo(context, const PortfolioView());
+              nextTo(
+                  context,
+                  const PortfolioView(
+                    Pathimage: '',
+                  ));
             },
             isIcon: true,
             settingName: 'Portfolio',

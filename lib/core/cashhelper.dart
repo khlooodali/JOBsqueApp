@@ -31,7 +31,11 @@ class CashHelper {
     return preferences.getString("token") ?? "";
   }
 
-  static bool getStatus() {
-    return preferences.getBool("status") ?? false;
+  static String getName() {
+    return preferences.getString("name") ?? "";
+  }
+
+  static String getEmail() {
+    return preferences.getString("email") ?? "";
   }
 }

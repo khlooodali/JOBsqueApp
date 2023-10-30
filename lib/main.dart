@@ -3,6 +3,7 @@ import 'package:findjop/auth/presention/controller/cubit/cubit/auth_cubit.dart';
 import 'package:findjop/auth/presention/screens/createaccount/cubit/sign_up_cubit.dart';
 import 'package:findjop/auth/presention/screens/createaccount/typejopview.dart';
 import 'package:findjop/auth/presention/screens/login/view.dart';
+import 'package:findjop/auth/presention/screens/profileandsettings.dart/cubit/cubit/profile_cubit.dart';
 import 'package:findjop/auth/presention/screens/profileandsettings.dart/editprofile.dart';
 import 'package:findjop/core/appcontainer.dart';
 import 'package:findjop/core/cashhelper.dart';
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
           providers: [
             BlocProvider(create: (_) => AuthCubit()),
             BlocProvider(create: (_) => JopCubit()),
+            BlocProvider(create: (_) => ProfileCubit()),
             BlocProvider(create: (_) => ExperinceCubitCubit()),
           ],
           child: MaterialApp(
@@ -137,7 +139,7 @@ class MyApp extends StatelessWidget {
           ),
         );
       },
-      child: const EditProfile(),
+      child: const LoginView(),
     );
   }
 }
