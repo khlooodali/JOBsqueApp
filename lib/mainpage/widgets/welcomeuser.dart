@@ -19,7 +19,7 @@ class WelcomView extends StatefulWidget {
 
 class _WelcomViewState extends State<WelcomView> {
   var parser = EmojiParser();
-   //String? name;
+  //String? name;
 
   @override
   Widget build(BuildContext context) {
@@ -34,35 +34,7 @@ class _WelcomViewState extends State<WelcomView> {
     return Builder(builder: (context) {
       AuthCubit userCubit = BlocProvider.of(context);
       return ListTile(
-        title: Row(
-          children: [
-        //   Text(
-        //   //   (name==null)?'':name!,
-        //   // style: Theme.of(context).textTheme.headlineMedium,
-        //   //      ),
-        //     //using profile data           //latalization errorrrrr
-            BlocBuilder<AuthCubit, AuthState>(
-              builder: (context, state) {
-                if (state is LoadingState) {
-                  return const Text('');
-                }
-                if (state is SuccessRequsetState) {
-                  return Text(
-                    userCubit.userProfile.data.name,
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  );
-                }
-                return const Text(
-                  '',
-                );
-              },
-            ),
-            Text(
-              welcomeEmoji,
-              style: Theme.of(context).textTheme.headlineMedium,
-            )
-          ],
-        ),
+        title: const Row(children: []),
         subtitle: Padding(
           padding: EdgeInsets.only(top: 8.h),
           child: Text(

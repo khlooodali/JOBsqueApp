@@ -1,10 +1,14 @@
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:findjop/auth/presention/controller/userprofile.dart';
+import 'package:findjop/auth/presention/controller/login_model.dart';
+
 import 'package:findjop/auth/presention/screens/createaccount/typejopview.dart';
 import 'package:findjop/auth/presention/screens/forgetpassword/sucesschangepassword.dart';
 import 'package:findjop/auth/presention/screens/login/view.dart';
 import 'package:findjop/auth/presention/screens/profileandsettings.dart/towstepotp.dart';
+import 'package:findjop/core/cashhelper.dart';
 import 'package:findjop/core/theme/appcolors.dart';
 import 'package:findjop/mainpage/view.dart';
 
@@ -22,8 +26,6 @@ part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
-
-  late UserProfile userProfile;
 
   void loginWithGoogle() async {
     emit(GoogleAuthLoadingState());
@@ -95,8 +97,6 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   void login(String email, String password, BuildContext context) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-
     final Dio dio = Dio();
     emit(LoginLoadingState());
     try {
@@ -108,16 +108,22 @@ class AuthCubit extends Cubit<AuthState> {
         },
       );
 
-      emit(LoginSuccess());
-      nextTo(context, const MainPageView(), isreplace: true);
-      print(response.data);
-      print('name is:  ${response.data["user"]["name"]}');
-      prefs.setString(token, response.data["token"]);
+      if (response.statusCode == 200) {
+        LoginModel? client = LoginModel.fromJson(jsonDecode(
+            CashHelper.preferences.get(CashHelper.userModelKey) as String));
+        final model = LoginModel.fromJson(response.data);
 
-      prefs.setString(userName, response.data["user"]["name"].toString());
-      prefs.setInt(userId as String, response.data["user"]["id"]);
+        CashHelper.saveLoginData(client);
+        print(client.token);
+        print('cashtoken:${CashHelper.getToken()}');
+        print('cashstatus:${CashHelper.getStatus()}');
+        emit(LoginSuccess());
+        nextTo(context, const MainPageView(), isreplace: true);
 
-      return response.data;
+        print(response.data);
+      }
+
+      //return response.data;
     } on DioError catch (e) {
       emit(LoginFailState());
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -137,7 +143,7 @@ class AuthCubit extends Cubit<AuthState> {
       var response = await dio.post(
         'https://project2.amit-learning.com/api/auth/user/update',
         options: Options(headers: {
-          "Authorization": 'Bearer $token',
+          "Authorization": 'Bearer ${CashHelper.getToken()}',
           "Accept": "application/json"
         }),
         data: {
@@ -177,7 +183,7 @@ class AuthCubit extends Cubit<AuthState> {
       var response = await dio.post(
         'https://project2.amit-learning.com/api/auth/otp',
         options: Options(headers: {
-          "Authorization": 'Bearer $token',
+          "Authorization": 'Bearer ${CashHelper.getToken()}',
           "Accept": "application/json"
         }),
         data: {
@@ -207,33 +213,6 @@ class AuthCubit extends Cubit<AuthState> {
           content: Text('Error!')));
 
       return e.response!.data;
-    }
-  }
-
-  void getUserProfile() async {
-    final Dio dio = Dio();
-
-    try {
-      emit(LoadingState());
-      final response = await dio.get(
-          'https://project2.amit-learning.com/api/auth/profile',
-          options: Options(headers: {
-            "Authorization": 'Bearer $token',
-            "Accept": "application/json"
-          }));
-
-      print(response.data);
-
-      userProfile = UserProfile.fromJson(response.data);
-
-      emit(SuccessRequsetState());
-      print(response.data['data']['name']);
-      return response.data;
-    } on DioException catch (e) {
-      print('faillllllled');
-      emit(FailState());
-      print(e.response!.data);
-      print(e.message);
     }
   }
 }

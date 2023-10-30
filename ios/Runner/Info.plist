@@ -7,6 +7,11 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>Findjop</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>My App need to open gallery</string>
+    <key>NSCameraUsageDescription</key>
+    <string>My App need to take image for  profile image</string>
+    
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

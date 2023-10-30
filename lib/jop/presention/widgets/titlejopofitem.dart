@@ -60,6 +60,7 @@ class _JopItemTitleState extends State<JopItemTitle> {
               trailing: InkWell(
                 onTap: () {
                   issaved = !issaved;
+
                   setState(() {});
                 },
                 child: SvgPicture.asset(

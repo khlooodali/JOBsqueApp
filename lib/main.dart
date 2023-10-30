@@ -3,7 +3,9 @@ import 'package:findjop/auth/presention/controller/cubit/cubit/auth_cubit.dart';
 import 'package:findjop/auth/presention/screens/createaccount/cubit/sign_up_cubit.dart';
 import 'package:findjop/auth/presention/screens/createaccount/typejopview.dart';
 import 'package:findjop/auth/presention/screens/login/view.dart';
+import 'package:findjop/auth/presention/screens/profileandsettings.dart/editprofile.dart';
 import 'package:findjop/core/appcontainer.dart';
+import 'package:findjop/core/cashhelper.dart';
 import 'package:findjop/core/theme/apptheme.dart';
 import 'package:findjop/experiance/controller/cubit/experince_cubit_cubit.dart';
 import 'package:findjop/experiance/view.dart';
@@ -23,10 +25,12 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await CashHelper.init();
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   runApp(const MyApp());
 }
 
@@ -133,7 +137,7 @@ class MyApp extends StatelessWidget {
           ),
         );
       },
-      child: const AppContainer(),
+      child: const EditProfile(),
     );
   }
 }

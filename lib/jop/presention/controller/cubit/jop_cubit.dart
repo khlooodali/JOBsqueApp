@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
+import 'package:findjop/core/cashhelper.dart';
 import 'package:findjop/jop/presention/model/jopmodel.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
@@ -24,12 +25,13 @@ class JopCubit extends Cubit<JopStates> {
 
     try {
       emit(JopLoading());
-      final response = await dio.get(
-          'https://project2.amit-learning.com/api/jobs',
-          options: Options(headers: {
-            "Authorization": "Bearer $token",
-            "Accept": "application/json"
-          }));
+      final response =
+          await dio.get('https://project2.amit-learning.com/api/jobs',
+              options: Options(headers: {
+                "Authorization":
+                    "Bearer 1470|znuNltBWiH1KSdX9JEY9PU8k5PCgurOQsK2oiSDA",
+                "Accept": "application/json"
+              }));
 
       print(response.data);
       jopModel = JopModel.fromJson(response.data);

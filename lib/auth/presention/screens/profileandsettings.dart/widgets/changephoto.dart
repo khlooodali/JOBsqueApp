@@ -3,7 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ChangePhoto extends StatelessWidget {
-  const ChangePhoto({super.key});
+  const ChangePhoto({
+    super.key,
+    required this.ontap,
+  });
+  final VoidCallback ontap;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,7 @@ class ChangePhoto extends StatelessWidget {
             height: 8.h,
           ),
           TextButton(
-              onPressed: () {},
+              onPressed: ontap,
               child: Text(
                 'Change  Photo',
                 style: Theme.of(context).textTheme.labelSmall,
